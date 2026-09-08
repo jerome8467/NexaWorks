@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../NexaWorks.Test/NexaWorks.Test.csproj" />
+  <Project Path="NexaWorks.csproj" />
+</Solution>

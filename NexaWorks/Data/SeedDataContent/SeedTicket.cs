@@ -1,0 +1,350 @@
+﻿using Microsoft.EntityFrameworkCore;
+using NexaWorks.Entities;
+using System.Net.NetworkInformation;
+
+namespace NexaWorks.Data.SeedDataContent
+{
+    public static class SeedTicket
+    {
+        public static void CreateSeedTicket(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Ticket>()
+                .HasData(
+                    new Ticket
+                    {
+                        Id = 1,
+                        CreationDate = new DateOnly(2023, 1, 10),
+                        Description = "L'utilisateur indique que le logiciel ne se lance pas du tout lorsqu'il clique sur l'icône depuis son bureau. Rien ne s'affiche à l'écran.",
+                        StatusTicketId = 2,
+                        VersionOsId = 1
+                    },
+
+                    new Ticket
+                    {
+                        Id = 2,
+                        CreationDate = new DateOnly(2023, 1, 15),
+                        Description = "L'utilisateur tente d'importer la liste de ses investissements depuis un fichier texte, mais le logiciel affiche un message d'erreur indiquant que le fichier est illisible.",
+                        StatusTicketId = 1,
+                        VersionOsId = 2
+                    },
+
+                    new Ticket
+                    {
+                        Id = 3,
+                        CreationDate = new DateOnly(2023, 2, 1),
+                        Description = "L'utilisateur n'arrive pas à lire les noms des actions sur son écran car le texte s'affiche en noir sur un fond gris foncé.",
+                        StatusTicketId = 2,
+                        VersionOsId = 3
+                    },
+
+                    new Ticket
+                    {
+                        Id = 4,
+                        CreationDate = new DateOnly(2023, 3, 10),
+                        Description = "L'utilisateur ne reçoit aucune notification sur son ordinateur lorsque le prix d'une action atteint le seuil qu'il a défini.",
+                        StatusTicketId = 1,
+                        VersionOsId = 4
+                    },
+
+                    new Ticket
+                    {
+                        Id = 5,
+                        CreationDate = new DateOnly(2023, 3, 20),
+                        Description = "L'application devient très lente puis se ferme toute seule si on laisse le graphique des prix ouvert pendant plus de 20 minutes.",
+                        StatusTicketId = 2,
+                        VersionOsId = 8
+                    },
+
+                    new Ticket
+                    {
+                        Id = 6,
+                        CreationDate = new DateOnly(2023, 4, 5),
+                        Description = "Lors d'une tentative de vente d'actions, la validation par reconnaissance faciale ne réagit pas et la vente reste bloquée.",
+                        StatusTicketId = 1,
+                        VersionOsId = 11
+                    },
+
+                    new Ticket
+                    {
+                        Id = 7,
+                        CreationDate = new DateOnly(2023, 4, 12),
+                        Description = "L'utilisateur demande à générer son récapitulatif annuel de gains en PDF pour le partager, mais le document généré sort entièrement vierge.",
+                        StatusTicketId = 2,
+                        VersionOsId = 11
+                    },
+
+                    new Ticket
+                    {
+                        Id = 8,
+                        CreationDate = new DateOnly(2023, 4, 25),
+                        Description = "Si l'utilisateur tourne son téléphone sur le côté pour mettre l'écran à l'horizontale pendant le chargement des données, l'écran reste bloqué.",
+                        StatusTicketId = 1,
+                        VersionOsId = 14
+                    },
+
+                    new Ticket
+                    {
+                        Id = 9,
+                        CreationDate = new DateOnly(2023, 4, 28),
+                        Description = "L'utilisateur ne parvient pas à connecter son compte bancaire à l'application. Un message indique que la liaison a échoué.",
+                        StatusTicketId = 2,
+                        VersionOsId = 15
+                    },
+
+                    new Ticket
+                    {
+                        Id = 10,
+                        CreationDate = new DateOnly(2023, 5, 10),
+                        Description = "L'ordinateur de l'utilisateur se met à chauffer fortement et le ventilateur fait du bruit dès que la rubrique \"Dividendes\" reste ouverte.",
+                        StatusTicketId = 1,
+                        VersionOsId = 16
+                    },
+
+                    new Ticket
+                    {
+                        Id = 11,
+                        CreationDate = new DateOnly(2023, 5, 15),
+                        Description = "L'utilisateur tente de modifier son adresse e-mail dans son profil, mais le logiciel lui refuse l'accès en disant qu'il n'a pas les droits nécessaires.",
+                        StatusTicketId = 2,
+                        VersionOsId = 17
+                    },
+
+                    new Ticket
+                    {
+                        Id = 12,
+                        CreationDate = new DateOnly(2023, 5, 22),
+                        Description = "Sur le graphique des prévisions, les montants financiers très élevés sont coupés sur la droite de l'écran et on ne voit pas les derniers chiffres.",
+                        StatusTicketId = 1,
+                        VersionOsId = 19
+                    },
+
+                    new Ticket
+                    {
+                        Id = 13,
+                        CreationDate = new DateOnly(2023, 5, 28),
+                        Description = "L'affichage du cours en temps réel se fige dès que l'utilisateur clique sur une autre fenêtre de son ordinateur.",
+                        StatusTicketId = 2,
+                        VersionOsId = 22
+                    },
+
+                    new Ticket
+                    {
+                        Id = 14,
+                        CreationDate = new DateOnly(2023, 6, 2),
+                        Description = "L'utilisateur n'arrive pas à synchroniser son compte bancaire secondaire avec le logiciel. Le compte n'est pas détecté lors de la recherche.",
+                        StatusTicketId = 1,
+                        VersionOsId = 24
+                    },
+
+                    new Ticket
+                    {
+                        Id = 15,
+                        CreationDate = new DateOnly(2023, 6, 8),
+                        Description = "Le logiciel se ferme brutalement à l'ouverture si aucun casque ou haut-parleur n'est branché sur l'ordinateur.",
+                        StatusTicketId = 2,
+                        VersionOsId = 25
+                    },
+
+                    new Ticket
+                    {
+                        Id = 16,
+                        CreationDate = new DateOnly(2023, 6, 14),
+                        Description = "L'enregistrement du parcours de course à pied s'interrompt brusquement au bout de 10 minutes d'activité et ne trace plus la carte.",
+                        StatusTicketId = 1,
+                        VersionOsId = 32
+                    },
+
+                    new Ticket
+                    {
+                        Id = 17,
+                        CreationDate = new DateOnly(2023, 6, 18),
+                        Description = "Impossible de partager ses séances de sport avec l'application de santé du téléphone, un message bloque l'autorisation.",
+                        StatusTicketId = 2,
+                        VersionOsId = 30
+                    },
+
+                    new Ticket
+                    {
+                        Id = 18,
+                        CreationDate = new DateOnly(2023, 6, 23),
+                        Description = "Les vidéos montrant comment réaliser les étirements refusent de se lancer et affichent un écran noir.",
+                        StatusTicketId = 1,
+                        VersionOsId = 33
+                    },
+
+                    new Ticket
+                    {
+                        Id = 19,
+                        CreationDate = new DateOnly(2023, 6, 27),
+                        Description = "L'utilisateur décoche l'option d'envoi de statistiques anonymes, mais l'option se re-coche toute seule lorsqu'il redémarre le logiciel.",
+                        StatusTicketId = 2,
+                        VersionOsId = 34
+                    },
+
+                    new Ticket
+                    {
+                        Id = 20,
+                        CreationDate = new DateOnly(2023, 7, 2),
+                        Description = "Les rappels quotidiens pour faire les exercices de relaxation arrivent sur le téléphone avec plusieurs heures de retard par rapport à l'heure programmée.",
+                        StatusTicketId = 1,
+                        VersionOsId = 36
+                    },
+
+                    new Ticket
+                    {
+                        Id = 21,
+                        CreationDate = new DateOnly(2023, 7, 6),
+                        Description = "L'utilisateur ne peut plus taper de texte dans son journal personnel dès qu'il atteint une cinquantaine de lignes.",
+                        StatusTicketId = 2,
+                        VersionOsId = 37
+                    },
+
+                    new Ticket
+                    {
+                        Id = 22,
+                        CreationDate = new DateOnly(2023, 7, 12),
+                        Description = "Lors de l'exportation du bilan mensuel sous forme de document, les émojis utilisés pour exprimer l'humeur apparaissent sous forme de petits carrés vides.",
+                        StatusTicketId = 1,
+                        VersionOsId = 39
+                    },
+
+                    new Ticket
+                    {
+                        Id = 23,
+                        CreationDate = new DateOnly(2023, 7, 16),
+                        Description = "L'application se ferme immédiatement si l'utilisateur l'ouvre alors qu'il n'a pas de connexion Internet (Wi-Fi désactivé ou câble débranché).",
+                        StatusTicketId = 2,
+                        VersionOsId = 38
+                    },
+
+                    new Ticket
+                    {
+                        Id = 24,
+                        CreationDate = new DateOnly(2023, 7, 20),
+                        Description = "Sur la page du bilan de la semaine, la courbe d'évolution affiche des symboles incompréhensibles au lieu du pourcentage de réussite.",
+                        StatusTicketId = 1,
+                        VersionOsId = 42
+                    },
+
+                    new Ticket
+                    {
+                        Id = 25,
+                        CreationDate = new DateOnly(2023, 7, 24),
+                        Description = "Lorsque l'utilisateur clique sur le bouton pour exporter ses conseils du jour, rien ne se passe et aucun message n'indique ce qui bloque.",
+                        StatusTicketId = 2,
+                        VersionOsId = 44
+                    }
+
+                );
+
+            modelBuilder.Entity<Resolution>()
+                .HasData(
+                    new Resolution
+                    {
+                        Id = 1,
+                        ResolutionDate = new DateOnly(2023, 1, 12),
+                        Description = "Il manquait un composant système sur l'ordinateur de l'utilisateur. Envoi de la marche à suivre pour installer le composant manquant et mise à jour du guide d'installation.",
+                        TicketId = 1
+                    },
+
+                    new Resolution
+                    {
+                        Id = 2,
+                        ResolutionDate = new DateOnly(2023, 2, 5),
+                        Description = "L'utilisateur avait activé le mode sombre de son ordinateur. Demande envoyée à l'équipe technique pour que les couleurs du logiciel s'adaptent automatiquement au mode sombre.",
+                        TicketId = 3
+                    },
+
+                    new Resolution
+                    {
+                        Id = 3,
+                        ResolutionDate = new DateOnly(2023, 3, 22),
+                        Description = "Le graphique accumulait trop d'informations en mémoire sans se nettoyer. Une mise à jour a été envoyée pour corriger ce comportement.",
+                        TicketId = 5
+                    },
+
+                    new Resolution
+                    {
+                        Id = 4,
+                        ResolutionDate = new DateOnly(2023, 4, 14),
+                        Description = "Un réglage d'affichage empêchait les données d'apparaître sur le document avant impression. Un correctif a été appliqué.",
+                        TicketId = 7
+                    },
+
+                    new Resolution
+                    {
+                        Id = 5,
+                        ResolutionDate = new DateOnly(2023, 5, 3),
+                        Description = "La banque avait changé sa procédure de sécurité. L'application a été mise à jour pour s'adapter aux nouvelles règles de la banque.",
+                        TicketId = 9
+                    },
+
+                    new Resolution
+                    {
+                        Id = 6,
+                        ResolutionDate = new DateOnly(2023, 5, 17),
+                        Description = "La session de l'utilisateur avait expiré en arrière-plan sans l'avertir. L'utilisateur s'est déconnecté puis reconnecté pour valider sa modification.",
+                        TicketId = 11
+                    },
+
+                    new Resolution
+                    {
+                        Id = 7,
+                        ResolutionDate = new DateOnly(2023, 5, 29),
+                        Description = "Le logiciel mettait le flux en pause automatique. Une option a été ajoutée pour permettre au flux de continuer à se mettre à jour en arrière-plan.",
+                        TicketId = 13
+                    },
+
+                    new Resolution
+                    {
+                        Id = 8,
+                        ResolutionDate = new DateOnly(2023, 6, 10),
+                        Description = "Le logiciel cherchait à jouer un son de bienvenue obligatoirement. Le problème a été corrigé pour que le son soit ignoré si aucun matériel audio n'est présent.",
+                        TicketId = 15
+                    },
+
+                    new Resolution
+                    {
+                        Id = 9,
+                        ResolutionDate = new DateOnly(2023, 6, 19),
+                        Description = "L'utilisateur n'avait pas coché la case d'autorisation dans les réglages de son téléphone. Guidage de l'utilisateur pas à pas pour activer l'option.",
+                        TicketId = 17
+                    },
+
+                    new Resolution
+                    {
+                        Id = 10,
+                        ResolutionDate = new DateOnly(2023, 6, 28),
+                        Description = "Un problème de sauvegarde des préférences a été corrigé. Les choix de l'utilisateur sont désormais bien enregistrés.",
+                        TicketId = 19
+                    },
+
+                    new Resolution
+                    {
+                        Id = 11,
+                        ResolutionDate = new DateOnly(2023, 7, 9),
+                        Description = "La zone de texte avait une limite de taille trop petite. La limite a été retirée pour permettre des textes plus longs.",
+                        TicketId = 21
+                    },
+
+                    new Resolution
+                    {
+                        Id = 12,
+                        ResolutionDate = new DateOnly(2023, 7, 18),
+                        Description = "L'application a été adaptée pour pouvoir consulter ses anciens messages même sans connexion Internet.",
+                        TicketId = 23
+                    },
+
+                    new Resolution
+                    {
+                        Id = 13,
+                        ResolutionDate = new DateOnly(2023, 7, 27),
+                        Description = "Aucune application de gestion de fichiers compatible n'était configurée sur le téléphone. Un message explicite a été ajouté pour avertir l'utilisateur d'exporter ou de sauvegarder au format PDF.",
+                        TicketId = 25
+                    }
+
+                );
+        }
+
+    }
+}
