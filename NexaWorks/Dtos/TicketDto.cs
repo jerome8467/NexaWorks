@@ -14,5 +14,6 @@ namespace NexaWorks.Dtos
         public string SystemOsName { get; set; } = string.Empty;
         public string StatusTitle { get; set; } = string.Empty;
         public string? Resolution {  get; set; }
+        public DateOnly? ResolutionDate { get; set; }
     }
 }

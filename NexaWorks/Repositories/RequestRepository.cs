@@ -63,7 +63,9 @@ namespace NexaWorks.Repositories
                     ProductVersion = t.VersionOs.VersionProduct.RefVersion,
                     SystemOsName = t.VersionOs.SystemOs.NameSystem,
                     StatusTitle = t.StatusTicket.Title,
+                    ResolutionDate = t.Resolution != null ? t.Resolution.ResolutionDate : null,
                     Resolution = t.Resolution != null ? t.Resolution.Description : null
+
                 })
                 .ToList();
         }
