@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NexaWorks.Dtos
+﻿namespace NexaWorks.Dtos
 {
     public class TicketDto
     {
@@ -13,7 +9,7 @@ namespace NexaWorks.Dtos
         public string ProductVersion {  get; set; } = string.Empty;
         public string SystemOsName { get; set; } = string.Empty;
         public string StatusTitle { get; set; } = string.Empty;
-        public string? Resolution {  get; set; }
         public DateOnly? ResolutionDate { get; set; }
+        public string? Resolution {  get; set; }
     }
 }
