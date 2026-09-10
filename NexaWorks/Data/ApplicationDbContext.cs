@@ -28,7 +28,7 @@ namespace NexaWorks.Data
                 .HasOne<Ticket>()
                 .WithOne(t => t.Resolution)
                 .HasForeignKey<Resolution>(t => t.TicketId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.VersionOs)

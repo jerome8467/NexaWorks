@@ -1,7 +1,9 @@
-﻿using NexaWorks.Data;
-using NexaWorks.Entities;
+﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
+using NexaWorks.Data;
 using NexaWorks.Dtos;
+using NexaWorks.Entities;
 using NexaWorks.Repositories;
+using Xunit.Abstractions;
 
 namespace NexaWorks.Test
 {
@@ -9,11 +11,13 @@ namespace NexaWorks.Test
     {
         private readonly ApplicationDbContext _database;
         private readonly RequestRepository _requestRepository;
+        private readonly ITestOutputHelper _output;
 
-        public GetTicketDto_Test()
+        public GetTicketDto_Test(ITestOutputHelper output)
         {
             _database = new ApplicationDbContext();
             _requestRepository = new RequestRepository(_database);
+            _output = output;
         }
 
         //// REQUEST 1
@@ -38,6 +42,7 @@ namespace NexaWorks.Test
             Assert.NotNull(tickets);
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("En cours", t.StatusTitle));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 2
@@ -66,6 +71,7 @@ namespace NexaWorks.Test
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("En cours", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 3
@@ -96,6 +102,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("En cours", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 4
@@ -125,6 +132,7 @@ namespace NexaWorks.Test
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 1, 10), new DateOnly(2023, 1, 20)));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 5
@@ -156,6 +164,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 04, 20), new DateOnly(2023, 04, 30)));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 6
@@ -184,6 +193,7 @@ namespace NexaWorks.Test
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("En cours", t.StatusTitle));
             Assert.All(tickets, t => Assert.Contains("aucune notification", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 7
@@ -214,6 +224,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("En cours", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Contains("aucune notification", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 8
@@ -246,6 +257,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
             Assert.All(tickets, t => Assert.Contains("aucune notification", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 9
@@ -277,6 +289,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 3, 5), new DateOnly(2023, 3, 15)));
             Assert.All(tickets, t => Assert.Contains("aucune notification", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 10
@@ -310,6 +323,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("1.0", t.ProductVersion));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 5, 5), new DateOnly(2023, 5, 15)));
             Assert.All(tickets, t => Assert.Contains("ventilateur", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 11
@@ -336,6 +350,7 @@ namespace NexaWorks.Test
             Assert.NotNull(tickets);
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 12
@@ -364,6 +379,7 @@ namespace NexaWorks.Test
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 13
@@ -394,6 +410,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 14
@@ -425,6 +442,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 1, 10), new DateOnly(2023, 1, 20)));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 15
@@ -458,6 +476,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
             Assert.All(tickets, t => Assert.InRange(t.CreationDate, new DateOnly(2023, 4, 25), new DateOnly(2023, 5, 1)));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 16
@@ -486,6 +505,7 @@ namespace NexaWorks.Test
             Assert.Equal(countNoResolve, tickets.Count());
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Contains("gris foncé", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 17
@@ -516,6 +536,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Contains("gris foncé", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 18
@@ -548,6 +569,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
             Assert.All(tickets, t => Assert.Contains("compte bancaire", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 19
@@ -580,6 +602,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Résolu", t.StatusTitle));
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Contains("icône", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
         //// REQUEST 20
@@ -614,6 +637,7 @@ namespace NexaWorks.Test
             Assert.All(tickets, t => Assert.Equal("Trader en Herbe", t.ProductName));
             Assert.All(tickets, t => Assert.Equal("1.3", t.ProductVersion));
             Assert.All(tickets, t => Assert.Contains("liaison a échoué", t.Description));
+            _output.WriteLine($"Résultat : {tickets.Count()}");
         }
 
     }
